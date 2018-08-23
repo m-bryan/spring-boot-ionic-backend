@@ -14,7 +14,6 @@ import com.bryan.cursomc.domain.Cliente;
 import com.bryan.cursomc.domain.Endereco;
 import com.bryan.cursomc.domain.Estado;
 import com.bryan.cursomc.domain.ItemPedido;
-import com.bryan.cursomc.domain.ItemPedidoPK;
 import com.bryan.cursomc.domain.Pagamento;
 import com.bryan.cursomc.domain.PagamentoComBoleto;
 import com.bryan.cursomc.domain.PagamentoComCartao;
