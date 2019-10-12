@@ -30,19 +30,19 @@ public class Cliente implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
-	
+
 	@Column(unique = true)
 	private String email;
 	private String cpfOuCnpj;
 	private Integer tipo;
-	
+
 	@JsonIgnore
 	private String senha;
 
 	@ElementCollection
 	@CollectionTable(name = "TELEFONE")
 	private Set<String> telefones = new HashSet<>();
-	
+
 	@ElementCollection(fetch = FetchType.EAGER)
 	@CollectionTable(name = "PERFIS")
 	private Set<Integer> perfis = new HashSet<>();
@@ -53,8 +53,6 @@ public class Cliente implements Serializable {
 	@OneToMany(mappedBy = "cliente")
 	@JsonIgnore
 	private List<Pedido> pedidos = new ArrayList<>();
-	
-	private String imageUrl;
 
 	public Cliente() {
 		addPerfil(Perfil.CLIENTE);
@@ -118,11 +116,11 @@ public class Cliente implements Serializable {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
+
 	public Set<Perfil> getPerfis() {
 		return perfis.stream().map(x -> Perfil.toEnum(x)).collect(Collectors.toSet());
 	}
-	
+
 	public void addPerfil(Perfil perfil) {
 		perfis.add(perfil.getCod());
 	}
@@ -149,14 +147,6 @@ public class Cliente implements Serializable {
 
 	public void setPedidos(List<Pedido> pedidos) {
 		this.pedidos = pedidos;
-	}
-
-	public String getImageUrl() {
-		return imageUrl;
-	}
-
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
 	}
 
 	@Override
